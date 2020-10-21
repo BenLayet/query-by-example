@@ -1,0 +1,58 @@
+GET http://localhost:4444/case-files
+Accept: application/json
+
+###
+POST http://localhost:4444/case-files
+Content-Type: application/json
+Accept: application/json
+
+[
+  {
+    "id": 1,
+    "name": "un",
+    "parties":[{
+      "id": 1,
+      "firstName": "party1FirstName",
+      "lastName": "party1LastName",
+      "legalName": "party1LegalName"
+    }]
+  },
+  {
+    "id": 2,
+    "name": "deux"
+  },
+  {
+    "id": 3,
+    "name": "trois"
+  }
+]
+
+###
+GET http://localhost:4444/case-files/search?caseFileStr={"name":"deux"}
+Accept: application/json
+
+###
+GET http://localhost:4444/case-files/search?caseFile={"name":"deux"}
+Accept: application/json
+
+###
+POST http://localhost:4444/case-files/search
+Content-Type: application/json
+Accept: application/json
+
+
+{
+  "name": "deux"
+}
+
+###
+POST http://localhost:4444/case-files/search
+Content-Type: application/json
+Accept: application/json
+
+{
+  "parties": [
+    {
+      "firstName": "party1FirstName"
+    }]
+}
